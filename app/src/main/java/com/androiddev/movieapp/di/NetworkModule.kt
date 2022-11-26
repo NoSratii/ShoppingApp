@@ -1,8 +1,8 @@
 package com.androiddev.movieapp.di
 
-import com.androiddev.data.remote.MovieApi
 import com.androiddev.movieapp.BuildConfig
 import com.androiddev.movieapp.util.Constant
+import com.google.gson.Gson
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -37,7 +37,6 @@ object NetworkModule {
     fun provideMoshi(builder: Moshi.Builder): Moshi = builder.build()
 
 
-
     @Provides
     @Singleton
     fun provideHttpClient(): OkHttpClient {
@@ -51,14 +50,22 @@ object NetworkModule {
         return builder.build()
     }
 
+
     @Provides
     @Singleton
-    fun provideRetrofitInstance(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofitInstance(okHttpClient: OkHttpClient ,moshi: Moshi): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return Gson()
+    }
+
 
 }

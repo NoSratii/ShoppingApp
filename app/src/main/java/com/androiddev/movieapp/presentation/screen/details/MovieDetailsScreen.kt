@@ -18,14 +18,6 @@ fun MovieDetailsScreen(
     viewModel: MovieDetailsViewModel = hiltViewModel(),
 ) {
    // viewModel.getMovieDetails(movieID = movieId.toInt())
-    Scaffold(
-        topBar={
-               MovieDetailsTopBar(navController)
-        },
-        contentColor = MaterialTheme.colors.AppContentColor,
-        backgroundColor = MaterialTheme.colors.AppThemeColor,
-        content = {
-         //   movieDetails?.let { MovieDetailsContent(it) }
-        })
+
 }
 

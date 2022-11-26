@@ -11,7 +11,6 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class UseCaseModule {
 
-
     @Binds
     abstract fun bindMovieUseCase(
         movieUseCaseImpl: MovieUseCaseImpl
