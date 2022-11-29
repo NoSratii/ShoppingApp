@@ -2,4 +2,9 @@
     <string name="app_name">Movie App</string>
     <string name="details">details</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="confirm">ok</string>
+    <string name="error">error</string>
+    <string name="please_try_another_time">please purchase between 8 and 19</string>
+    <string name="warning">warning</string>
+    <string name="shop_icon">shop_icon</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.androiddev.data.errorHandler
 
 import android.util.MalformedJsonException
-import com.androiddev.data.dto.ErrorDto
+import com.androiddev.data.dto.common.ErrorDto
 import com.androiddev.domain.entity.common.ErrorEntity
 import com.androiddev.data.constant.NetworkConstants
 import com.squareup.moshi.Moshi
