@@ -1,7 +1,5 @@
 package com.androiddev.domain.entity.response
 
-import androidx.annotation.DrawableRes
-
 sealed class ShoppingEntity {
 
     data class ShopResponse(

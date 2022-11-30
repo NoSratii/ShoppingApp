@@ -4,22 +4,16 @@ package com.androiddev.shoppingapp.presentation.screen.home
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.androiddev.data.utils.pagination.DefaultPaginator
-import com.androiddev.domain.entity.response.ShoppingEntity
 import com.androiddev.domain.useCase.OrderUseCase
 import com.androiddev.domain.useCase.ShoppingUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.List
 
 @HiltViewModel
 class HomeViewModel @Inject
