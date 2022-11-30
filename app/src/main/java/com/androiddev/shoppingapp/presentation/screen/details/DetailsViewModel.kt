@@ -28,7 +28,7 @@ class DetailsViewModel @Inject constructor(
 
 
     private fun getSaveHandleState(savedStateHandle: SavedStateHandle) {
-        if (savedStateHandle.contains(Constant.SHOPPING_DETAILS_ARGUMENT_KEY)) {
+        if (savedStateHandle.contains(SHOPPING_DETAILS_ARGUMENT_KEY)) {
 
             loadDetails(checkNotNull(savedStateHandle[SHOPPING_DETAILS_ARGUMENT_KEY]))
 

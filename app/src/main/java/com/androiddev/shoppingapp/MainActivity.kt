@@ -37,15 +37,13 @@ class MainActivity : FragmentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val navController = rememberNavController()
-                    val navBackStackEntry by navController.currentBackStackEntryAsState()
                     val scaffoldState = rememberScaffoldState()
 
                     StandardScaffold(
-                        navController = navController,
                         state = scaffoldState,
                         modifier = Modifier.fillMaxSize(),
                     ) {
-                        SetupNavGraph(navController = navController, scaffoldState = scaffoldState)
+                        SetupNavGraph(navController = navController)
                     }
 
                 }

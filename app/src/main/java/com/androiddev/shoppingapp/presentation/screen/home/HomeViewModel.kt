@@ -13,6 +13,7 @@ import com.androiddev.domain.entity.response.ShoppingEntity
 import com.androiddev.domain.useCase.OrderUseCase
 import com.androiddev.domain.useCase.ShoppingUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
@@ -31,44 +32,23 @@ constructor(
     var orderState by mutableStateOf(OrderItemsState())
     private val rightNow = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
 
-    private val paginator = DefaultPaginator(
-        initialKey = state.page,
-        onLoadUpdated = {
-            state = state.copy(isLoading = it)
-        },
-        onRequest = { nextPage ->
-            shoppingUseCases.getPopularItemsUseCase(nextPage, 20)
-        },
-        getNextKey = {
-            state.page + 1
-        },
-        onError = {
-            state = state.copy(error = it?.localizedMessage)
-        },
-        onSuccess = { items, newKey ->
-            state = state.copy(
-                items = state.items + items,
-                page = newKey,
-                endReached = items.isEmpty()
-            )
-        }
-    )
-
 
     init {
-        loadOrders()
-        loadShopItems()
 
-/*        if (rightNow in 8..19) {
+        if (rightNow in 8..19) {
 
+            loadOrders()
             loadShopItems()
         } else {
-            state = state.copy(isShowShimmer = true, isShowDialog = true)
-        }*/
+            state = state.copy(isLoading = true, isShowDialog = true)
+        }
     }
 
     fun loadShopItems() {
         viewModelScope.launch {
+            delay(2000)
+            state = state.copy(isLoading = false, isShowDialog = false)
+
             state = state.copy(
                 items = shoppingUseCases.getShoppingItems()
             )

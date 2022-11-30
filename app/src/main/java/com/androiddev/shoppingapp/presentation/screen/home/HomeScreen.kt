@@ -43,33 +43,36 @@ fun HomeScreen(
         }
     }
 
-    if (state.isLoading) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.padding(8.dp)
-        ) {
-            repeat(10) {
-                item { LoadingShimmerEffect() }
-            }
-        }
-
-    }
-
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (orderState.totalPrice > BigDecimal(0.0)) {
 
-            OrderSummary(orderState = orderState)
+        if (state.isLoading) {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier.padding(8.dp)
+            ) {
+                repeat(10) {
+                    item { LoadingShimmerEffect() }
+                }
+            }
+
+        } else {
+            if (orderState.totalPrice > BigDecimal(0.0)) {
+
+                OrderSummary(orderState = orderState)
+            }
+            ShopListContent(
+                orderState = orderState,
+                navController = navController,
+                onRemoved = { viewModel.removeShoppingItem(it) },
+                onAdded = { viewModel.addShoppingItem(it) },
+            )
         }
-        ShopListContent(
-            orderState = orderState,
-            navController = navController,
-            onRemoved = { viewModel.removeShoppingItem(it) },
-            onAdded = { viewModel.addShoppingItem(it) },
-        )
+
+
     }
 
 

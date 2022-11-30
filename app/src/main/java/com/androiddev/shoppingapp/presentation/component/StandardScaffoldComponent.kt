@@ -9,11 +9,8 @@ import androidx.navigation.NavController
 
 @Composable
 fun StandardScaffold(
-    navController: NavController,
     modifier: Modifier = Modifier,
-    showBottomBar: Boolean = true,
     state: ScaffoldState,
-    onFabClick: () -> Unit = {},
     content: @Composable (Modifier) -> Unit
 ) {
     Scaffold(
