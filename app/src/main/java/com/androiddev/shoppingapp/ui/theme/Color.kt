@@ -28,4 +28,4 @@ val Colors.AppContentColor
 val Colors.TitleColor
     get() = if (isLight) Color.Black else Color.White
 
-val Colors.ItemBackgroundColor get() =if (isLight) Grey100 else BlueGrey900
+val Colors.ItemBackgroundColor get() = if (isLight) colorprimarylight else BlueGrey900

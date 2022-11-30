@@ -1,10 +1,15 @@
 <resources>
-    <string name="app_name">Movie App</string>
+    <string name="app_name">Shopping App</string>
     <string name="details">details</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="confirm">ok</string>
-    <string name="error">error</string>
-    <string name="please_try_another_time">please purchase between 8 and 19</string>
+    <string name="confirm">تایید</string>
+    <string name="error">خطا</string>
+    <string name="please_try_another_time">بازه ثبت سفارش از 8 تا 19</string>
     <string name="warning">warning</string>
     <string name="shop_icon">shop_icon</string>
+    <string name="counter_increase">＋</string>
+    <string name="counter_decrease">—</string>
+    <string name="minimum_purchase" formatted="false">حداقل خرید %1$s</string>
+    <string name="Complete_purchase">تکمیل خرید </string>
+
 </resources>

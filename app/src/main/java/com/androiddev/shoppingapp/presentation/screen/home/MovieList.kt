@@ -12,13 +12,16 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.androiddev.shoppingapp.presentation.component.ShoppingItem
 import com.androiddev.shoppingapp.presentation.navigation.Screen
+import kotlinx.coroutines.flow.asFlow
 
 
 @Composable
 fun ShopListContent(
-    homeState: HomeState,
+    orderState: OrderItemsState,
     navController: NavHostController,
-    loadShopItems: () -> Unit
+    loadShopItems: () -> Unit,
+    onAdded: (orderId: Long) -> Unit,
+    onRemoved: (orderId: Long) -> Unit,
 ) {
 
     LazyVerticalGrid(
@@ -28,30 +31,16 @@ fun ShopListContent(
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(all = 8.dp),
         content = {
+            items(orderState.orderItems.size) { index ->
 
-            items(homeState.items.size) { index ->
-                if (index >= homeState.items.size - 1 && !homeState.endReached && !homeState.isLoading) {
-                    loadShopItems()
-                }
-
-                ShoppingItem(homeState.items[index]) {
-                    navController.navigate(Screen.DetailsScreen.route)
-                }
+                ShoppingItem(
+                    orderItem = orderState.orderItems[index],
+                    onAdded = { onAdded(it) },
+                    onRemoved = { onRemoved(it) },
+                    onItemClick = {
+                        navController.navigate(Screen.DetailsScreen.route)
+                    })
             }
-            item {
-                if (homeState.isLoading) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        CircularProgressIndicator()
-                    }
-                }
-            }
-
-
         }
     )
 

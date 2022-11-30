@@ -2,7 +2,9 @@ package com.androiddev.shoppingapp.di
 
 import com.androiddev.data.repository.BaseRepositoryImpl
 import com.androiddev.data.repository.ShoppingRepositoryImpl
+import com.androiddev.data.repository.order.OrderRepositoryImpl
 import com.androiddev.domain.repository.BaseRepository
+import com.androiddev.domain.repository.OrderRepository
 import com.androiddev.domain.repository.ShoppingRepository
 import dagger.Binds
 import dagger.Module
@@ -20,5 +22,11 @@ abstract class RepositoryModule {
     abstract fun bindShopRepository(
         shopRepositoryImpl: ShoppingRepositoryImpl
     ): ShoppingRepository
+
+
+    @Binds
+    abstract fun bindOrderRepository(
+        orderRepositoryImpl: OrderRepositoryImpl
+    ): OrderRepository
 
 }

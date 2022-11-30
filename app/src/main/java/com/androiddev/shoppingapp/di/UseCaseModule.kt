@@ -1,6 +1,8 @@
 package com.androiddev.shoppingapp.di
 
+import com.androiddev.data.useCase.OrderUseCaseImpl
 import com.androiddev.data.useCase.ShoppingUseCaseImpl
+import com.androiddev.domain.useCase.OrderUseCase
 import com.androiddev.domain.useCase.ShoppingUseCases
 import dagger.Binds
 import dagger.Module
@@ -15,5 +17,10 @@ abstract class UseCaseModule {
     abstract fun bindShopUseCase(
         shoppingUseCaseImpl: ShoppingUseCaseImpl
     ): ShoppingUseCases
+
+    @Binds
+    abstract fun bindOrderUseCase(
+        orderUseCaseImpl: OrderUseCaseImpl
+    ): OrderUseCase
 
 }

@@ -1,5 +1,7 @@
 package com.androiddev.domain.entity.response
 
+import androidx.annotation.DrawableRes
+
 sealed class ShoppingEntity {
 
     data class ShopResponse(
@@ -11,12 +13,21 @@ sealed class ShoppingEntity {
     )
 
     data class ShoppingItem(
-        val titleId: String? = null,
-        val subTitleId: String? = null,
-        val icon: String? = null,
+        val titleId: Long,
+        val subTitleId: String,
+        val imageUrl: String,
         val hasOff: Boolean = false,
         val price: Double = 0.0,
-        val desc: String? = null
+        val count: Int = -1,
+        val description: String? = null
+    )
+
+    data class OrderItems(
+        val id: Long,
+        val name: String,
+        val imageUrl: String,
+        val price: Double,
+        val count: Int
     )
 
 }

@@ -17,7 +17,10 @@ class ShoppingUseCaseImpl @Inject constructor(private val repository: ShoppingRe
     ): Result<List<ShoppingEntity.ShoppingItem>> {
 
         return repository.getPopularItemsRepository(page = page, pageSize = pageSize)
+    }
 
+    override suspend fun getShoppingItems(): List<ShoppingEntity.ShoppingItem> {
+        return repository.getAllItems()
     }
 
 }
