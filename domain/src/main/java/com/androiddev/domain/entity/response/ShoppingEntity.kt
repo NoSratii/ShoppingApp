@@ -18,8 +18,8 @@ sealed class ShoppingEntity {
         val imageUrl: String,
         val hasOff: Boolean = false,
         val price: Double = 0.0,
-        val count: Int = -1,
-        val description: String? = null
+        val count: Int = 0,
+        val description: String = ""
     )
 
     data class OrderItems(
@@ -27,7 +27,9 @@ sealed class ShoppingEntity {
         val name: String,
         val imageUrl: String,
         val price: Double,
-        val count: Int
+        val count: Int,
+        val description: String
+
     )
 
 }

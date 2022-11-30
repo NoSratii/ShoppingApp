@@ -9,7 +9,7 @@ fun DetailsScreen(
     navController: NavHostController,
     viewModel: DetailsViewModel = hiltViewModel()
 ) {
-    DetailsContent(navController = navController)
+    DetailsContent(viewModel.state, navController = navController)
 
 }
 

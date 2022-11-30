@@ -69,7 +69,7 @@ fun HomeScreen(
             navController = navController,
             onRemoved = { viewModel.removeShoppingItem(it) },
             onAdded = { viewModel.addShoppingItem(it) },
-            loadShopItems = { viewModel.loadShopItems() })
+        )
     }
 
 
